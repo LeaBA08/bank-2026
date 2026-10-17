@@ -18,4 +18,11 @@ abstract class Account
 
     //Note: quand une méthode est "abstraite", il faut d'office l'écrire dans les classes filles.
     protected abstract double CalculInterets();
+
+    /*Ajouter une méthode « public » à la classe « Account » appelée « ApplyInterest » qui 
+additionnera le solde avec le retour de la méthode « CalculInterest ».*/
+    public void ApplyInterest()
+    {
+        Balance += CalculInterets();
+    }
 }
