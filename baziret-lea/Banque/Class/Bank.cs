@@ -20,4 +20,18 @@ class Bank
     {
         Accounts.Remove(number);
     }
+    
+    //Permettre à la banque de donner la somme de tous les comptes d’une personne
+    public double GetTotalSumAccount(Person owner)
+    {
+        double sum = 0;
+        foreach(CurrentAccount account in Accounts.Values)
+        {
+            if(account.Owner == owner)
+            {
+                sum += account.Balance; 
+            }
+        }
+        return sum;
+    }
 }
