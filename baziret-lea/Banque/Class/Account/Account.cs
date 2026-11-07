@@ -1,9 +1,9 @@
 
-abstract class Account
+abstract class Account : IAccount, IBankAccount
 {
-    public string? Number;
+    public string? Number{get;set;}
     public double Balance { get; private set; }
-    public Person? Owner;
+    public Person? Owner{get;set;}
 
     //Note: "virtual" car le comportement de Withdraw change en fonction du type d'Account.
     public virtual void Withdraw(double amount)
