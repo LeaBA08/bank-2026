@@ -1,12 +1,13 @@
 
 class Person
-{
-    public string? FirstName;
-    public string? LastName;
-    public DateTime BirthDate;
+{   
+    //Seule la classe peut modifier la donnée grâce au "private set".
+    public string? FirstName{ get; private set; }
+    public string? LastName{ get; private set; }
+    public DateTime BirthDate{ get; private set; }
 
     //Note: La methode en dessous est un "constructeur". 
-    // Ca permet de "forcer" l'instanciassion quand on fait new()
+    //Ca permet de "forcer" l'instanciation quand on fait new()
     public Person(string firstName, string lastName, DateTime birthDate)
     {
         FirstName = firstName;

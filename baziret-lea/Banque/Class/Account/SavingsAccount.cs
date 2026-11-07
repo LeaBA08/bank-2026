@@ -1,6 +1,7 @@
 class SavingsAccount : Account
 {
-    public DateTime DateLastWithdraw;
+    public SavingsAccount(string Number, Person Owner): base(Number, Owner){}
+    public DateTime DateLastWithdraw{ get; private set; }
 
     protected override double CalculInterets()
     {

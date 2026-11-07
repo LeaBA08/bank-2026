@@ -6,10 +6,10 @@ class Bank
 
     //Note: Tous les endroits ou il y avait auparavant "CurrentAccount" a été changé par "Account", pour que 
     //          tous les types d'Account soit acceptés.
-    public Dictionary<string, Account> Accounts { get; private set; } = new Dictionary<string, Account>();
+    public Dictionary<string, IBankAccount> Accounts { get; private set; } = new Dictionary<string, IBankAccount>();
     public string? Name;
 
-    public void AddAccount(Account account)
+    public void AddAccount(IBankAccount account)
     {
         //Note: Vérifier que le "number" n'est pas null, dans quel cas on ne le rajoute pas dans Accounts.
         if (account.Number == null)
@@ -28,7 +28,7 @@ class Bank
     public double GetTotalSumAccount(Person owner)
     {
         double sum = 0;
-        foreach (Account account in Accounts.Values)
+        foreach (IBankAccount account in Accounts.Values)
         {
             if (account.Owner == owner)
             {

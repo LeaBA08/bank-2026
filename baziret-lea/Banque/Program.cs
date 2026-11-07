@@ -5,14 +5,11 @@ banque.Name = "nomDeBanque";
 
 Person Lea = new Person("Lea", "Baziret", new DateTime(2006,02,08));
 
-CurrentAccount myAccount = new CurrentAccount();
-myAccount.Number = "BE123456789";
-myAccount.CreditLine = 1200;
-myAccount.Owner = Lea;
+CurrentAccount myAccount = new CurrentAccount("BE123456789", Lea, 1200);
 
-SavingsAccount mySavingsAccount = new SavingsAccount();
-mySavingsAccount.Number = "BE987654321";
-mySavingsAccount.Owner = Lea;
+
+SavingsAccount mySavingsAccount = new SavingsAccount("BE987654321", Lea);
+
 
 banque.AddAccount(myAccount);
 banque.AddAccount(mySavingsAccount);
@@ -31,3 +28,13 @@ mySavingsAccount.ApplyInterest();
 Console.WriteLine("Solde courant : " + myAccount.Balance);
 Console.WriteLine("Solde épargne : " + mySavingsAccount.Balance);
 Console.WriteLine("Total de Lea : " + banque.GetTotalSumAccount(Lea));
+
+//test pour voir si les throw exceptions fonctionnent. OK
+try
+{
+    CurrentAccount test = new CurrentAccount("BE000", Lea, -100);
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine("Erreur : " + ex.Message);
+}

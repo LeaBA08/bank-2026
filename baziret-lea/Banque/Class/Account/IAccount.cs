@@ -4,5 +4,5 @@ interface IAccount
     //Tout comme abstract, pas de "corp" pour les methodes, juste leur nom.
     double Balance { get;}
     void Deposit(double amount);
-    void Withdraw(double amount);
+    void Withdraw(double amount);   
 }
