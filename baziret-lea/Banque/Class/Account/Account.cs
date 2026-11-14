@@ -20,16 +20,13 @@ abstract class Account : IAccount, IBankAccount
     //Note: "virtual" car le comportement de Withdraw change en fonction du type d'Account.
     public virtual void Withdraw(double amount)
     {
-        if (amount <=0)
+        if (amount <= 0)
         {
-            throw new ArgumentOutOfRangeException();
-        }
-        if (Balance - amount < 0)
-        {
-            throw new InsufficientBalanceException();
+            throw new ArgumentOutOfRangeException(nameof(amount), "Le montant doit être supérieur à 0.");
         }
         Balance -= amount;
     }
+    
 
     public void Deposit(double amount)
     {
@@ -48,5 +45,12 @@ additionnera le solde avec le retour de la méthode « CalculInterest ».*/
     public void ApplyInterest()
     {
         Balance += CalculInterets();
+    }
+
+    public event Action<Account>? NegativeBalanceEvent; //on choisit "action" car la méthode ne revoie rien.
+    //anciennement « un event appelé NegativeBalanceEvent, dont les abonnés doivent respecter la forme NegativeBalanceDelegate ».
+    protected void OnNegativeBalance() //methode qui permet de declencher l'event dans une autre class que Account.
+    {
+        NegativeBalanceEvent?.Invoke(this);
     }
 }

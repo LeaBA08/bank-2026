@@ -38,3 +38,11 @@ catch (ArgumentOutOfRangeException ex)
 {
     Console.WriteLine("Erreur : " + ex.Message);
 }
+
+try { myAccount.Deposit(-50); }
+catch (ArgumentOutOfRangeException ex) { Console.WriteLine("Dépôt refusé : " + ex.Message); }
+
+try { mySavingsAccount.Withdraw(1000); }
+catch (InsufficientBalanceException ex) { Console.WriteLine("Retrait refusé : " + ex.Message); }
+
+myAccount.Withdraw(1500);   // passe en négatif : la banque affiche l'alerte

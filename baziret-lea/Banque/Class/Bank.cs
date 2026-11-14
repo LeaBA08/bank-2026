@@ -18,6 +18,7 @@ class Bank
             return;
         }
         Accounts.Add(account.Number, account);
+        account.NegativeBalanceEvent += OnNegativeBalance;
     }
     public void DeleteAccount(string number)
     {
@@ -36,5 +37,10 @@ class Bank
             }
         }
         return sum;
+    }
+
+    public void OnNegativeBalance(Account account)
+    {
+        Console.WriteLine("Le numéro de compte " + account.Number + " vient de passer en négatif");
     }
 }

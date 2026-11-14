@@ -6,4 +6,5 @@ interface IBankAccount
     void ApplyInterest();
     Person? Owner {get;}
     string? Number {get;}
+    event Action<Account>? NegativeBalanceEvent;
 }
